@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='styles.css'>
+    <title>Blog</title>
+</head>
+
+<body>
+    <header>
+        <h1 class="logo"><a href="#">Anna's world🤍</a></h1>
+        <nav>
+            <ul>
+                <li class="nav1"><a href="/">Home</a></li>
+                <li class="nav1">
+                      <a href="#" id="createPostBtn">
+                          Create Post
+                      </a>
+                  </li>
+                <li class="nav1"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Button to open the create post modal -->
+        <button id="createPostBtn">Create Post</button>
+
+        <!-- Modal for creating posts -->
+        <div id="createPostModal" class="modal" style="display: none;">
+            <form id="postForm">
+                <input type="text" id="postCategory" placeholder="Category">
+                <input type="text" id="postTitle" placeholder="Title">
+                <textarea id="postDescription" placeholder="Description"></textarea>
+                <button type="submit" id="postSubmitBtn">Create Post</button>
+            </form>
+            <button id="closeModal">Close</button>
+        </div>
+
+        <!-- Container for posts -->
+        <div id="postContainer"></div>
+        <div id="postCreatedMessage" style="display: none;">Post Created</div>
+
+        <button id="clearPostsBtn" class="clear-posts-btn">Clear Posts</button>
+    </main>
+
+    <footer>
+        <p>&copy; Anna's dream world</p>
+    </footer>
+    <script src='blog.js'></script>
+</body>
+
+</html>
