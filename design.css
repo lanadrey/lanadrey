@@ -64,20 +64,24 @@ footer {
     padding: 0.7rem;
 }
 
+/* Style for post container */
 .post-container {
-    margin-left: 5%;
-    margin-right: 5%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
-    gap: 2.5rem;
+    margin: 20px;
 }
 
+/* Style for individual post boxes */
 .post-box {
-    border: 1px solid black;
-    border-radius: 40px;
-    text-align: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 15px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .category {
@@ -121,9 +125,8 @@ footer {
     line-height: 1.5;
 }
 
-/* Styles for the modal */
+/* Ensure modal is centered and styled */
 .modal {
-    z-index: 1000;
     display: none;
     position: fixed;
     top: 0;
@@ -137,8 +140,12 @@ footer {
 }
 
 .modal-content {
-    max-width: 50%;
-    width: 100%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
     height: 75%;
     margin: auto;
     background: rgba(255, 255, 255, 0.67);
@@ -146,7 +153,6 @@ footer {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(9.5px);
     -webkit-backdrop-filter: blur(9.5px);
-    padding: 20px;
     padding-top: 5px;
     border-radius: 10px;
     overflow-y: auto;
