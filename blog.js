@@ -100,5 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Remove the post from the DOM
             event.target.closest('.post-box').remove();
-            // Update savedPosts variable to current state 
-            savedPosts.length = 0; //
+        }
+    });
+});
