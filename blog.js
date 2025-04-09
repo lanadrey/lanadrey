@@ -110,16 +110,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (event.target.classList.contains('delete-post')) {
-            const titleToDelete = event.target.getAttribute('data-title');
-            const postToDelete = document.querySelector(`.post-title[data-title="${titleToDelete}"]`).closest('.post-box');
+            const postElement = event.target.closest('.post-box');
+            const postTitle = event.target.getAttribute('data-title');
 
-            // Add fadeOut class to initiate the animation
-            postToDelete.classList.add('fadeOut');
+            // Remove the post from localStorage
+            const savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+            const updatedPosts = savedPosts.filter(post => post.postTitle !== postTitle);
+            localStorage.setItem('posts', JSON.stringify(updatedPosts));
 
-            // Remove the post after the animation completes
-            setTimeout(() => {
-                postContainer.removeChild(postToDelete);
-            }, 500);
+            // Remove the post from the DOM
+            postElement.remove();
         }
     });
 
@@ -135,4 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Add this button inside the main element or wherever appropriate
-<button id="clearPostsBtn" class="clear-posts-btn">Clear Posts</button>
+<button id="clearPostsBtn" class="clear-post">Clear Posts</button>
+
+// CSS has been moved to a separate file (styles.css). Ensure it is linked in your HTML file.
