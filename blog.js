@@ -82,16 +82,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const newPostElement = document.createElement('div');
         newPostElement.className = 'post-box';
         newPostElement.innerHTML = `
-            <h1 class="post-title" data-title="${post.postTitle}" data-date="${post.formattedDate}" data-description="${post.postDescription}">
-                ${post.postTitle}
-            </h1><br>
-            <h2 class="category">${post.postCategory}</h2><br>
+            <h1 class="post-title">${post.postTitle}</h1>
+            <h2 class="category">${post.postCategory}</h2>
             <span class="post-date">${post.formattedDate}</span>
-            <p class="post-description">${post.postDescription.substring(0, 100)}...</p>
-            <button class="delete-post" data-title="${post.postTitle}">Delete</button>
-            <span class="load-more" data-title="${post.postTitle}" data-date="${post.formattedDate}" data-description="${post.postDescription}">Load more</span>
+            <p class="post-description">${post.postDescription}</p>
+            <button class="delete-post">Delete</button>
         `;
-        postContainer.insertBefore(newPostElement, postContainer.firstChild);
+        postContainer.appendChild(newPostElement);
     }
 
     postContainer.addEventListener('click', function (event) {
@@ -138,3 +135,4 @@ document.addEventListener('DOMContentLoaded', function () {
 <button id="clearPostsBtn" class="clear-post">Clear Posts</button>
 
 // CSS has been moved to a separate file (styles.css). Ensure it is linked in your HTML file.
+
