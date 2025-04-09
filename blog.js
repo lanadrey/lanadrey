@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
     clearPostsBtn.addEventListener('click', function () {
         // Clear posts from localStorage
         localStorage.removeItem('posts');
-
         // Clear posts from the DOM
         postContainer.innerHTML = '';
     });
@@ -82,57 +81,24 @@ document.addEventListener('DOMContentLoaded', function () {
         const newPostElement = document.createElement('div');
         newPostElement.className = 'post-box';
         newPostElement.innerHTML = `
-            <h1 class="post-title">${post.postTitle}</h1>
+            <h1 class="post-title" data-title="${post.postTitle}">${post.postTitle}</h1>
             <h2 class="category">${post.postCategory}</h2>
             <span class="post-date">${post.formattedDate}</span>
             <p class="post-description">${post.postDescription}</p>
-            <button class="delete-post">Delete</button>
+            <button class="delete-post" data-title="${post.postTitle}">Delete</button>
         `;
         postContainer.appendChild(newPostElement);
     }
 
     postContainer.addEventListener('click', function (event) {
-        if (event.target.classList.contains('load-more') || event.target.classList.contains('post-title')) {
-            const title = event.target.getAttribute('data-title');
-            const date = event.target.getAttribute('data-date');
-            const description = event.target.getAttribute('data-description');
-
-            // Set content in detail modal
-            detailTitle.textContent = title;
-            detailDate.textContent = date;
-            detailDescription.textContent = description;
-
-            // Display the detail modal
-            postDetailModal.style.display = 'flex';
-        }
-
         if (event.target.classList.contains('delete-post')) {
-            const postElement = event.target.closest('.post-box');
             const postTitle = event.target.getAttribute('data-title');
 
             // Remove the post from localStorage
-            const savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
             const updatedPosts = savedPosts.filter(post => post.postTitle !== postTitle);
             localStorage.setItem('posts', JSON.stringify(updatedPosts));
 
             // Remove the post from the DOM
-            postElement.remove();
-        }
-    });
-
-    closeDetailModal.addEventListener('click', function () {
-        // Add fadeOut class
-        postDetailModal.classList.add('fadeOut');
-        setTimeout(() => {
-            postDetailModal.style.display = 'none';
-            // Remove fadeOut class
-            postDetailModal.classList.remove('fadeOut');
-        }, 500);
-    });
-});
-
-// Add this button inside the main element or wherever appropriate
-<button id="clearPostsBtn" class="clear-post">Clear Posts</button>
-
-// CSS has been moved to a separate file (styles.css). Ensure it is linked in your HTML file.
-
+            event.target.closest('.post-box').remove();
+            // Update savedPosts variable to current state 
+            savedPosts.length = 0; //
